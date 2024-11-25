@@ -6,7 +6,7 @@ let message2 = "ZHDK";
 let framerate = 10;
 
 function preload() { //ladet die Schriftart
-  font = loadFont("Arial Rounded Bold.ttf");
+  font = loadFont("Arial-Rounded-Bold.otf");
 }
 
 function setup() {
