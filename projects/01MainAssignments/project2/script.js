@@ -1,29 +1,54 @@
-let len = 10;
-let bg;
+
+let ball;
+let paddlePlayer;
+let paddleComputer;
+
+function preload() { //ladet die Schriftart
+  font = loadFont("/fonts/Arial-Rounded-Bold.otf");
+}
 
 function setup() {
 	createCanvas(windowWidth,windowHeight);
 	background(0);
-	frameRate(30);
+	textSize(50);
+	textAlign(CENTER, CENTER);
+	//fill
+
+
+ //Start Button
 	rectMode(CENTER);
-	bg = color(200, 0, 58);
+	stroke(100);
+	strokeWeight(3);
+	fill(0,150,150);
+	rect(width/2,height/2,200,100);
+
+	//Text
+text ("START",windowWidth/2,windowHeight/2);
+text.Size
+//grösse,Farbe
 }
 
 function  draw() {
-	background(bg);
-	noFill();
-	strokeWeight(5);
-	stroke(0,130, 140);
-	
-	ellipse(pmouseX, pmouseY, len, len)
-  //height - mouseY mirrors the object along y axis
-  	ellipse(pmouseX, height - pmouseY, len, len)
-	//increase the lenght by 1px every frame
-	len++;
-	
-	if(mouseIsPressed) {
-		len = 0;  
-		bg = color(189, 3, 33);
-	}
+  
+function ball(){
+strokeWeight(3);
+fill(0,255,70);
+circle(width/2,height/2,40);
 }
 
+fill(255);
+noStroke();
+rect(20,windowHeight/2,20,200);
+
+//Paddle2
+fill(255);
+noStroke();
+rect(windowWidth-20,windowHeight/2,20,200);
+
+}
+
+function keyPressed(){
+	if (keyCode === 32){ 
+	
+	}
+	}

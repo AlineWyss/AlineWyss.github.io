@@ -1,65 +1,82 @@
 let font;
-let points1 = [];//Punkte für message1
-let points2 = [];//Punkte für message2
+let points1 = []; 
+let points2 = []; 
+let originalPoints1 = [];
+let originalPoints2 = [];
 let message1 = "Interaction Design";
 let message2 = "ZHDK";
-let framerate = 10;
+let isMousePressed = false;
 
-function preload() { //ladet die Schriftart
+function preload() {
   font = loadFont("/fonts/Arial-Rounded-Bold.otf");
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth, windowHeight);
   background(0);
 
   textFont(font);
   textSize(600);
 
-  points1 = font.textToPoints(message1, width/12, height / 2, 180, {
+  //message1
+  points1 = font.textToPoints(message1, width / 23, height / 2, 180, {
     sampleFactor: 0.2,
-    simplifyThreshold: 0
-	});
-	
-	points2 = font.textToPoints(message2, width/4, height / 4*3, 300, {
-    sampleFactor: 0.2,
-    simplifyThreshold: 0
+    simplifyThreshold: 0,
   });
+
+  //message2
+  points2 = font.textToPoints(message2, width / 4, height / 4 * 3, 300, {
+    sampleFactor: 0.2,
+    simplifyThreshold: 0,
+  });
+
+  originalPoints1 = points1.map(pt => ({ ...pt }));
+  originalPoints2 = points2.map(pt => ({ ...pt }));
 }
 
 function draw() {
   background(0);
-	
-	
-  for (let pt of points1) {
-    let angle = atan2(mouseY - pt.y, mouseX - pt.x);
-    pt.x += cos(angle) *3;
-    pt.y += sin(angle) *2;
-	
-    fill(255, 255, 0);
-    ellipse(pt.x, pt.y, 5, 5);
+
+  // message1
+  for (let i = 0; i < points1.length; i++) {
+    let pt = points1[i];
+
+    if (isMousePressed) {
+      pt.x += random(-3, -3);
+      pt.y += random(-3,-3);
+    } else {
+      pt.x += (originalPoints1[i].x - pt.x) * 0.1;
+      pt.y += (originalPoints1[i].y - pt.y) * 0.1;
+    }
+
+    let colorShift = isMousePressed ? [random(100, 255), random( 255), 0] : [255, 255, 0];
+    fill(...colorShift);
+    ellipse(pt.x, pt.y, 10, 10);
   }
-for (let pt of points2) {
-    let angle = atan2(mouseY - pt.y, mouseX - pt.x);
-    pt.x += cos(angle) *1;
-    pt.y += sin(angle) *2;
-	
-    fill(255,50,0);
-    ellipse(pt.x, pt.y, 5, 5);
+
+  // message2
+  for (let i = 0; i < points2.length; i++) {
+    let pt = points2[i];
+
+    if (isMousePressed) {
+      pt.x += random(-3, 3);
+      pt.y += random(-3, 3);
+    } else {
+      pt.x += (originalPoints2[i].x - pt.x) * 0.1;
+      pt.y += (originalPoints2[i].y - pt.y) * 0.1;
+    }
+
+    let colorShift = isMousePressed ? [random(255), 50, random( 255)] : [255, 0, 0];
+    fill(...colorShift);
+    ellipse(pt.x, pt.y, 20, 20);
   }
 }
+
 function mousePressed() {
-  resetPoints();
+  isMousePressed = true;
 }
 
-function resetPoints() {
-  points1 = font.textToPoints(message1, width/12, height / 2, 180, {
-    sampleFactor: 0.2,
-    simplifyThreshold: 0
-  });
-points2 = font.textToPoints(message2, width/4, height / 4*3, 300, {
-    sampleFactor: 0.2,
-    simplifyThreshold: 0
-  });
-}
+function mouseReleased() {
+  isMousePressed = false;
 
+}
