@@ -1,54 +1,40 @@
+let buttons = [];
+let font;
 
-let ball;
-let paddlePlayer;
-let paddleComputer;
-
-function preload() { //ladet die Schriftart
+function preload() {
   font = loadFont("/fonts/Arial-Rounded-Bold.otf");
 }
 
 function setup() {
-	createCanvas(windowWidth,windowHeight);
-	background(0);
-	textSize(50);
-	textAlign(CENTER, CENTER);
-	//fill
+  createCanvas(windowWidth, windowHeight);
 
-
- //Start Button
-	rectMode(CENTER);
-	stroke(100);
-	strokeWeight(3);
-	fill(0,150,150);
-	rect(width/2,height/2,200,100);
-
-	//Text
-text ("START",windowWidth/2,windowHeight/2);
-text.Size
-//grösse,Farbe
+  createNewButton();
 }
 
-function  draw() {
-  
-function ball(){
-strokeWeight(3);
-fill(0,255,70);
-circle(width/2,height/2,40);
+function createNewButton() {
+  let newButton = createButton("Klick mich!");
+  newButton.size(random(80, 120), random(40, 60));
+  newButton.position(random(width - 50), random(height - 20));
+  newButton.mouseOver(() => moveAndSpawn(newButton));
+  buttons.push(newButton);
 }
 
-fill(255);
-noStroke();
-rect(20,windowHeight/2,20,200);
+function moveAndSpawn(button) {
+  button.position(random(width - 50), random(height - 50));
 
-//Paddle2
-fill(255);
-noStroke();
-rect(windowWidth-20,windowHeight/2,20,200);
-
+  createNewButton();
 }
-
-function keyPressed(){
-	if (keyCode === 32){ 
-	
+function keyPressed () {
+	while (buttons.length > 1) {
+	  let removedButton = buttons.pop();
+	  removedButton.remove();
 	}
-	}
+   }
+
+function draw() {
+  background(0);
+  fill(255);
+  textFont(font);
+  textSize(50);
+  text("Klicke den Button!",50, 100);
+}
