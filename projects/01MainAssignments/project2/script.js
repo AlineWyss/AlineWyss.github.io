@@ -36,6 +36,6 @@ function draw() {
   background(0);
   fill(255);
   textFont(font);
-  textSize(50);
-  text("Klicke den Button!", 50, 100);
+  textSize(100);
+  text("Klicke den Button!", width/2-450, 200);
 }
