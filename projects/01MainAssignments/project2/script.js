@@ -17,6 +17,10 @@ function createNewButton() {
   newButton.size(random(100, 160), random(70, 100));
   newButton.position(random(width - 20), random(height- 20));
   newButton.mouseOver(() => moveAndSpawn(newButton));
+  newButton.style('border', 'none');
+  newButton.style('border-radius', '20px');
+  newButton.style('background-color', 'white');
+  newButton.style('font-size', '18px');
   buttons.push(newButton);
 }
 
