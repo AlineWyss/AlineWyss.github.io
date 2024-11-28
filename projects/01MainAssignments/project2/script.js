@@ -10,12 +10,13 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   createNewButton();
+  textAlign(CENTER,CENTER);
 }
 
 function createNewButton() {
   let newButton = createButton(random(messages)); 
   newButton.size(random(100, 160), random(70, 100));
-  newButton.position(random(width - 20), random(height- 20));
+  newButton.position(random(width ), random(height));
   newButton.mouseOver(() => moveAndSpawn(newButton));
   newButton.style('border', 'none');
   newButton.style('border-radius', '20px');
@@ -25,7 +26,7 @@ function createNewButton() {
 }
 
 function moveAndSpawn(button) {
-  button.position(random(width - 20), random(height - 20));
+  button.position(random(width), random(height ));
   createNewButton();
 }
 
@@ -41,5 +42,6 @@ function draw() {
   fill(255);
   textFont(font);
   textSize(100);
-  text("Klicke den Button!", width/2-450, 200);
+  text("Klicke den Button!", width/2, height/2);
+  //text("Klicke den Button");
 }
