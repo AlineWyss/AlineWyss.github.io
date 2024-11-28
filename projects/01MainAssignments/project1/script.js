@@ -37,6 +37,22 @@ function setup() {
 function draw() {
   background(0);
 
+  for (let pt of points1) {
+    let angle = atan2(mouseY - pt.y, mouseX - pt.x);
+    pt.x += cos(angle) *3;
+    pt.y += sin(angle) *2;
+	
+    fill(255, 255, 0);
+    ellipse(pt.x, pt.y, 5, 5);
+  }
+for (let pt of points2) {
+    let angle = atan2(mouseY - pt.y, mouseX - pt.x);
+    pt.x += cos(angle) *1;
+    pt.y += sin(angle) *2;
+	
+    fill(255,50,0);
+    ellipse(pt.x, pt.y, 5, 5);
+  }
   // message1
   for (let i = 0; i < points1.length; i++) {
     let pt = points1[i];
