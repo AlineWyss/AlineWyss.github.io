@@ -42,7 +42,7 @@ function draw() {
     let pt = points1[i];
 
     if (isMousePressed) {
-      pt.x += random(-3, -3);
+      pt.x += random(-3, 3);
       pt.y += random(-3,3);
     } else {
       pt.x += (originalPoints1[i].x - pt.x) * 0.1;
