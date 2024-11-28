@@ -42,8 +42,8 @@ function draw() {
     let pt = points1[i];
 
     if (isMousePressed) {
-      pt.x += random(-3, 3);
-      pt.y += random(-3,3);
+      pt.x += random(-20,20);
+      pt.y += random(-20,20);
     } else {
       pt.x += (originalPoints1[i].x - pt.x) * 0.1;
       pt.y += (originalPoints1[i].y - pt.y) * 0.1;
@@ -59,8 +59,8 @@ function draw() {
     let pt = points2[i];
 
     if (isMousePressed) {
-      pt.x += random(-3, 3);
-      pt.y += random(-3, 3);
+      pt.x += random(-8, 8);
+      pt.y += random(-8, 8);
     } else {
       pt.x += (originalPoints2[i].x - pt.x) * 0.1;
       pt.y += (originalPoints2[i].y - pt.y) * 0.1;
