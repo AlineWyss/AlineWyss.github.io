@@ -9,7 +9,7 @@ Please refer to the following instructions in order to set up your portfolio pag
 - Download [Github Desktop](https://desktop.github.com/)
 - Follow the instructions to create your [Github Pages website](https://pages.github.com/)
 - Download this respository by clicking on Code --> Download ZIP
-- Move the files inside of this repository into your Github Pages respository named xyz.github.io, where xyz is your username
+- Move the files  inside of this repository into your Github Pages respository named xyz.github.io, where xyz is your username
 - Commit and push the changes to your Github Pages repository using Github Desktop
 - Go to your Github Pages website and check if everything is working correctly
 
